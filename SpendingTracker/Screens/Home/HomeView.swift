@@ -12,6 +12,8 @@ struct HomeView: View {
     @Environment(\.modelContext) var modelContext
     
     @Query var settings: [MainSettings]
+    @Query(sort: [SortDescriptor(\Subcategories.name)]) var subcategories: [Subcategories]
+    @State private var showingSheet = false
     
     var body: some View {
         NavigationStack {
@@ -23,15 +25,14 @@ struct HomeView: View {
                             modelContext.insert(mainSetting)
                         }
                     } else {
-                        var bankBalance = settings[0].bankBalance
-                        var cashBalance = settings[0].cashBalance
-                        var budget = settings[0].budget
-                        var numberOfDays = Date().numberOfDaysBetweenCurrentAndEnd()
-                        var total = (bankBalance + cashBalance) - budget
-                        var dailyLimit = total / numberOfDays
-                        var spentToday = 0.00
-                        var earntToday = 0.00
-                        
+                        let bankBalance = settings[0].bankBalance
+                        let cashBalance = settings[0].cashBalance
+                        let budget = settings[0].budget
+                        let numberOfDays = Date().numberOfDaysBetweenCurrentAndEnd()
+                        let total = (bankBalance + cashBalance) - budget
+                        let dailyLimit = total / numberOfDays
+                        let spentToday = 0.00
+                        let earntToday = 0.00
                         
                         VStack {
                             Text("Daily Expense Limit")
@@ -60,8 +61,8 @@ struct HomeView: View {
                             .frame(height: 12)
                         
                         VStack {
-                            Text("Spent Today")
-                            Text(spentToday.formatted(.currency(code: "EUR")))
+                            Text("Earnt Today")
+                            Text(earntToday.formatted(.currency(code: "EUR")))
                                 .font(.system(size: 40, weight: .black))
                         }
                         .padding(30)
@@ -111,6 +112,9 @@ struct HomeView: View {
                 }
                 .padding(.horizontal)
             }
+            .sheet(isPresented: $showingSheet) {
+                AddJournalView(subcategory: subcategories[0], dismiss: { showingSheet.toggle() })
+            }
             .navigationTitle("Home")
             .toolbar {
                 ToolbarItem {
@@ -121,6 +125,6 @@ struct HomeView: View {
     }
     
     func addJournal() {
-        
+        showingSheet.toggle()
     }
 }
