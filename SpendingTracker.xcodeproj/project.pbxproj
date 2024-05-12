@@ -27,6 +27,8 @@
 		E635BE102BF020DB00CF7D0B /* AddJournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E635BE0F2BF020DB00CF7D0B /* AddJournalView.swift */; };
 		E635BE132BF07CE200CF7D0B /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E635BE122BF07CE200CF7D0B /* Localizable.xcstrings */; };
 		E635BE162BF0956600CF7D0B /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E635BE152BF0956600CF7D0B /* DateFormatter.swift */; };
+		E635BE192BF0B11900CF7D0B /* JournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E635BE182BF0B11900CF7D0B /* JournalView.swift */; };
+		E635BE1C2BF0B4E900CF7D0B /* Journal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E635BE1B2BF0B4E900CF7D0B /* Journal.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,8 @@
 		E635BE122BF07CE200CF7D0B /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		E635BE142BF08E4E00CF7D0B /* SpendingTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SpendingTracker.entitlements; sourceTree = "<group>"; };
 		E635BE152BF0956600CF7D0B /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
+		E635BE182BF0B11900CF7D0B /* JournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalView.swift; sourceTree = "<group>"; };
+		E635BE1B2BF0B4E900CF7D0B /* Journal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journal.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +118,7 @@
 				E635BDF02BEF8BCC00CF7D0B /* Expenses.swift */,
 				E635BDF22BEF8C2800CF7D0B /* Categories.swift */,
 				E635BDF42BEF8C9100CF7D0B /* Subcategories.swift */,
+				E635BE1B2BF0B4E900CF7D0B /* Journal.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -128,6 +133,7 @@
 		E635BDF82BEF8EF700CF7D0B /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				E635BE172BF0B10600CF7D0B /* Journal */,
 				E635BE082BEFDC0A00CF7D0B /* Home */,
 				E635BE012BEFBE8000CF7D0B /* Settings */,
 				E635BE072BEFD9DC00CF7D0B /* Categories */,
@@ -179,6 +185,14 @@
 				E635BE122BF07CE200CF7D0B /* Localizable.xcstrings */,
 			);
 			path = Localization;
+			sourceTree = "<group>";
+		};
+		E635BE172BF0B10600CF7D0B /* Journal */ = {
+			isa = PBXGroup;
+			children = (
+				E635BE182BF0B11900CF7D0B /* JournalView.swift */,
+			);
+			path = Journal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,6 +274,7 @@
 				E635BDFA2BEF8F0D00CF7D0B /* CategoriesView.swift in Sources */,
 				E635BDF12BEF8BCC00CF7D0B /* Expenses.swift in Sources */,
 				E635BDE02BEF893300CF7D0B /* ContentView.swift in Sources */,
+				E635BE192BF0B11900CF7D0B /* JournalView.swift in Sources */,
 				E635BDF52BEF8C9100CF7D0B /* Subcategories.swift in Sources */,
 				E635BE162BF0956600CF7D0B /* DateFormatter.swift in Sources */,
 				E635BDDE2BEF893300CF7D0B /* SpendingTrackerApp.swift in Sources */,
@@ -267,6 +282,7 @@
 				E635BDFE2BEF95BB00CF7D0B /* EditCategoryView.swift in Sources */,
 				E635BDEF2BEF8B0A00CF7D0B /* Income.swift in Sources */,
 				E635BE002BEFB92100CF7D0B /* EditSubcategoryView.swift in Sources */,
+				E635BE1C2BF0B4E900CF7D0B /* Journal.swift in Sources */,
 				E635BDED2BEF896400CF7D0B /* MainSettings.swift in Sources */,
 				E635BDF32BEF8C2800CF7D0B /* Categories.swift in Sources */,
 				E635BE102BF020DB00CF7D0B /* AddJournalView.swift in Sources */,

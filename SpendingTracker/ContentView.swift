@@ -24,6 +24,11 @@ struct ContentView: View {
                     Label("Categories", systemImage: "list.bullet.clipboard")
                 }
             
+            JournalView()
+                .tabItem {
+                    Label("Journal", systemImage: "calendar")
+                }
+            
             Group {
                 if !(settings.isEmpty) {
                     SettingsView(setting: settings[0])

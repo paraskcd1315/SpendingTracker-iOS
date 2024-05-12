@@ -116,6 +116,9 @@
         }
       }
     },
+    "Are you sure you want to delete this Expense of %@." : {
+
+    },
     "Bank" : {
       "localizations" : {
         "es" : {
@@ -211,6 +214,12 @@
           }
         }
       }
+    },
+    "Can't delete journal." : {
+
+    },
+    "Cancel" : {
+
     },
     "Cash" : {
       "localizations" : {
@@ -339,6 +348,15 @@
           }
         }
       }
+    },
+    "Delete" : {
+
+    },
+    "Delete Expense" : {
+
+    },
+    "Delete Income" : {
+
     },
     "Description:" : {
       "localizations" : {
@@ -652,6 +670,9 @@
           }
         }
       }
+    },
+    "Something went wrong" : {
+
     },
     "Spent Today" : {
       "localizations" : {
