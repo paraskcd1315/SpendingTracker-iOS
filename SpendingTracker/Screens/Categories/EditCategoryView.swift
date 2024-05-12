@@ -56,7 +56,7 @@ struct EditCategoryView: View {
             }
         }
         .navigationTitle(category.name)
-        .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "Search subcategories")
+        .searchable(text: $searchText, prompt: "Search subcategories")
     }
     
     func addSubcategory() {

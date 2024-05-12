@@ -16,6 +16,14 @@ extension Date {
         return Calendar.current.date(byAdding: DateComponents(month: 1, day: -1), to: self.startOfMonth())!
     }
     
+    func startOfDay() -> Date {
+        return Calendar.current.startOfDay(for: self)
+    }
+    
+    func endOfDay() -> Date {
+        return Calendar.current.date(byAdding: DateComponents(day: 1), to: self.startOfDay())!
+    }
+    
     func numberOfDaysBetweenCurrentAndEnd() -> Double {
         let calendar = Calendar.current
         let fromDate = Date.now // <1>

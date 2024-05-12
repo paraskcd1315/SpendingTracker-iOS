@@ -12,8 +12,12 @@ struct HomeView: View {
     @Environment(\.modelContext) var modelContext
     
     @Query var settings: [MainSettings]
+    @Query var expenses: [Expenses]
+    @Query var income: [Income]
     @Query(sort: [SortDescriptor(\Subcategories.name)]) var subcategories: [Subcategories]
     @State private var showingSheet = false
+    
+    let locale = Locale.current
     
     var body: some View {
         NavigationStack {
@@ -31,12 +35,12 @@ struct HomeView: View {
                         let numberOfDays = Date().numberOfDaysBetweenCurrentAndEnd()
                         let total = (bankBalance + cashBalance) - budget
                         let dailyLimit = total / numberOfDays
-                        let spentToday = 0.00
-                        let earntToday = 0.00
+                        let spentToday = totalSpent()
+                        let earntToday = totalEarnt()
                         
                         VStack {
                             Text("Daily Expense Limit")
-                            Text(dailyLimit.formatted(.currency(code: "EUR")))
+                            Text(dailyLimit.formatted(.currency(code: locale.currency!.identifier)))
                                 .font(.system(size: 40, weight: .black))
                         }
                         .padding(30)
@@ -49,7 +53,7 @@ struct HomeView: View {
                         
                         VStack {
                             Text("Spent Today")
-                            Text(spentToday.formatted(.currency(code: "EUR")))
+                            Text(spentToday.formatted(.currency(code: locale.currency!.identifier)))
                                 .font(.system(size: 40, weight: .black))
                         }
                         .padding(30)
@@ -62,7 +66,7 @@ struct HomeView: View {
                         
                         VStack {
                             Text("Earnt Today")
-                            Text(earntToday.formatted(.currency(code: "EUR")))
+                            Text(earntToday.formatted(.currency(code: locale.currency!.identifier)))
                                 .font(.system(size: 40, weight: .black))
                         }
                         .padding(30)
@@ -75,7 +79,7 @@ struct HomeView: View {
                         
                         VStack {
                             Text("Cash")
-                            Text(cashBalance.formatted(.currency(code: "EUR")))
+                            Text(cashBalance.formatted(.currency(code: locale.currency!.identifier)))
                                 .font(.system(size: 40, weight: .black))
                         }
                         .padding(30)
@@ -88,7 +92,7 @@ struct HomeView: View {
                         
                         VStack {
                             Text("Bank")
-                            Text(bankBalance.formatted(.currency(code: "EUR")))
+                            Text(bankBalance.formatted(.currency(code: locale.currency!.identifier)))
                                 .font(.system(size: 40, weight: .black))
                         }
                         .padding(30)
@@ -101,7 +105,7 @@ struct HomeView: View {
                         
                         VStack {
                             Text("Budget")
-                            Text(budget.formatted(.currency(code: "EUR")))
+                            Text(budget.formatted(.currency(code: locale.currency!.identifier)))
                                 .font(.system(size: 40, weight: .black))
                         }
                         .padding(30)
@@ -126,5 +130,35 @@ struct HomeView: View {
     
     func addJournal() {
         showingSheet.toggle()
+    }
+    
+    func totalSpent() -> Double {
+        var addedAmount = 0.00
+        let startDate = Date().startOfDay()
+        let endDate = Date().endOfDay()
+        if !expenses.isEmpty {
+            for expense in expenses {
+                if startDate <= expense.entryDate && endDate >= expense.entryDate {
+                    addedAmount += expense.amount
+                }
+            }
+        }
+        
+        return addedAmount
+    }
+    
+    func totalEarnt() -> Double {
+        var addedAmount = 0.00
+        let startDate = Date().startOfDay()
+        let endDate = Date().endOfDay()
+        if !income.isEmpty {
+            for inc in income {
+                if startDate <= inc.entryDate && endDate >= inc.entryDate {
+                    addedAmount += inc.amount
+                }
+            }
+        }
+        
+        return addedAmount
     }
 }

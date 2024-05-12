@@ -25,6 +25,8 @@
 		E635BE0A2BEFDC1900CF7D0B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E635BE092BEFDC1900CF7D0B /* HomeView.swift */; };
 		E635BE0E2BF0148400CF7D0B /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = E635BE0D2BF0148400CF7D0B /* Date.swift */; };
 		E635BE102BF020DB00CF7D0B /* AddJournalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E635BE0F2BF020DB00CF7D0B /* AddJournalView.swift */; };
+		E635BE132BF07CE200CF7D0B /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E635BE122BF07CE200CF7D0B /* Localizable.xcstrings */; };
+		E635BE162BF0956600CF7D0B /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E635BE152BF0956600CF7D0B /* DateFormatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +49,9 @@
 		E635BE092BEFDC1900CF7D0B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		E635BE0D2BF0148400CF7D0B /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		E635BE0F2BF020DB00CF7D0B /* AddJournalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddJournalView.swift; sourceTree = "<group>"; };
+		E635BE122BF07CE200CF7D0B /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		E635BE142BF08E4E00CF7D0B /* SpendingTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SpendingTracker.entitlements; sourceTree = "<group>"; };
+		E635BE152BF0956600CF7D0B /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +84,8 @@
 		E635BDDC2BEF893300CF7D0B /* SpendingTracker */ = {
 			isa = PBXGroup;
 			children = (
+				E635BE142BF08E4E00CF7D0B /* SpendingTracker.entitlements */,
+				E635BE112BF07CA800CF7D0B /* Localization */,
 				E635BE022BEFC48F00CF7D0B /* Extensions */,
 				E635BDF82BEF8EF700CF7D0B /* Screens */,
 				E635BDF62BEF8EAE00CF7D0B /* Utils */,
@@ -141,6 +148,7 @@
 			children = (
 				E635BE032BEFC4A000CF7D0B /* String.swift */,
 				E635BE0D2BF0148400CF7D0B /* Date.swift */,
+				E635BE152BF0956600CF7D0B /* DateFormatter.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -163,6 +171,14 @@
 				E635BE0F2BF020DB00CF7D0B /* AddJournalView.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		E635BE112BF07CA800CF7D0B /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				E635BE122BF07CE200CF7D0B /* Localizable.xcstrings */,
+			);
+			path = Localization;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,6 +223,8 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
+				"es-419",
 			);
 			mainGroup = E635BDD12BEF893300CF7D0B;
 			productRefGroup = E635BDDB2BEF893300CF7D0B /* Products */;
@@ -225,6 +243,7 @@
 			files = (
 				E635BDE52BEF893500CF7D0B /* Preview Assets.xcassets in Resources */,
 				E635BDE22BEF893500CF7D0B /* Assets.xcassets in Resources */,
+				E635BE132BF07CE200CF7D0B /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,6 +261,7 @@
 				E635BDF12BEF8BCC00CF7D0B /* Expenses.swift in Sources */,
 				E635BDE02BEF893300CF7D0B /* ContentView.swift in Sources */,
 				E635BDF52BEF8C9100CF7D0B /* Subcategories.swift in Sources */,
+				E635BE162BF0956600CF7D0B /* DateFormatter.swift in Sources */,
 				E635BDDE2BEF893300CF7D0B /* SpendingTrackerApp.swift in Sources */,
 				E635BE042BEFC4A100CF7D0B /* String.swift in Sources */,
 				E635BDFE2BEF95BB00CF7D0B /* EditCategoryView.swift in Sources */,
@@ -381,6 +401,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SpendingTracker/SpendingTracker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SpendingTracker/Preview Content\"";
@@ -403,12 +424,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.paraskcd.SpendingTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -417,6 +438,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SpendingTracker/SpendingTracker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SpendingTracker/Preview Content\"";
@@ -439,12 +461,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.paraskcd.SpendingTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

@@ -26,6 +26,8 @@ struct SettingsView: View {
     
     @FocusState private var focusedField: Field?
     
+    let locale = Locale.current
+    
     var body: some View {
         NavigationStack {
             Form {
@@ -34,7 +36,7 @@ struct SettingsView: View {
                     HStack {
                         Text("Bank Balance: ")
                             .frame(width: 128, alignment: .leading)
-                        TextField("Amount", value: $setting.bankBalance, format: .currency(code: "EUR"))
+                        TextField("Amount", value: $setting.bankBalance, format: .currency(code: locale.currency!.identifier))
                             .focused($focusedField, equals: .bankBalance)
                             .onChange(of: setting.bankBalance) { oldValue, newValue in
                                 setting.updatedDate = .now
@@ -47,7 +49,7 @@ struct SettingsView: View {
                     HStack {
                         Text("Cash Balance: ")
                             .frame(width: 128, alignment: .leading)
-                        TextField("Amount", value: $setting.cashBalance, format: .currency(code: "EUR"))
+                        TextField("Amount", value: $setting.cashBalance, format: .currency(code: locale.currency!.identifier))
                             .focused($focusedField, equals: .cashBalance)
                             .onChange(of: setting.cashBalance) { oldValue, newValue in
                                 setting.updatedDate = .now
@@ -59,7 +61,7 @@ struct SettingsView: View {
                     HStack {
                         Text("Budget: ")
                             .frame(width: 128, alignment: .leading)
-                        TextField("Amount", value: $setting.budget, format: .currency(code: "EUR"))
+                        TextField("Amount", value: $setting.budget, format: .currency(code: locale.currency!.identifier))
                             .focused($focusedField, equals: .budget)
                             .onChange(of: setting.budget) { oldValue, newValue in
                                 setting.updatedDate = .now

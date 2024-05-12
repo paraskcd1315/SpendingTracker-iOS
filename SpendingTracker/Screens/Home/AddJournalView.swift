@@ -18,6 +18,7 @@ struct AddJournalView: View {
     @State private var description: String = ""
     @State var subcategory: Subcategories
     @State private var isCash: Bool = false
+    let locale = Locale.current
     
     var dismiss: () -> Void
     
@@ -36,7 +37,7 @@ struct AddJournalView: View {
                         HStack {
                             Text("Amount: ")
                                 .frame(width: 100, alignment: .leading)
-                            TextField("Amount", value: $amount, format: .currency(code: "EUR"))
+                            TextField("Amount", value: $amount, format: .currency(code: locale.currency!.identifier))
                         }
                         HStack {
                             Text("Description:")
@@ -56,7 +57,7 @@ struct AddJournalView: View {
                         HStack {
                             Text("Amount: ")
                                 .frame(width: 100, alignment: .leading)
-                            TextField("Amount", value: $amount, format: .currency(code: "EUR"))
+                            TextField("Amount", value: $amount, format: .currency(code: locale.currency!.identifier))
                         }
                         HStack {
                             Text("Description:")
@@ -87,7 +88,7 @@ struct AddJournalView: View {
     }
     
     func addExpense() {
-        let expense = Expenses(amount: amount, expDescription: description, isCash: isCash, subcategory: nil)
+        let expense = Expenses(amount: amount, entryDate: .now, expDescription: description, isCash: isCash, subcategory: nil)
         subcategory.expenses.append(expense)
         settings[0].updatedDate = expense.entryDate
         settings[0].bankBalance = isCash ? settings[0].bankBalance : settings[0].bankBalance - amount
@@ -95,7 +96,7 @@ struct AddJournalView: View {
     }
     
     func addIncome() {
-        let income = Income(amount: amount, incDescription: description, isCash: isCash, subcategory: nil)
+        let income = Income(amount: amount, entryDate: .now, incDescription: description, isCash: isCash, subcategory: nil)
         subcategory.income.append(income)
         settings[0].updatedDate = income.entryDate
         settings[0].bankBalance = isCash ? settings[0].bankBalance : settings[0].bankBalance + amount
