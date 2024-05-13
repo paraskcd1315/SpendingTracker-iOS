@@ -121,8 +121,10 @@ struct HomeView: View {
             }
             .navigationTitle("Home")
             .toolbar {
-                ToolbarItem {
-                    Button("Add Journal", systemImage: "plus", action: addJournal)
+                if !(subcategories.isEmpty) {
+                    ToolbarItem {
+                        Button("Add Journal", systemImage: "plus", action: addJournal)
+                    }
                 }
             }
         }
