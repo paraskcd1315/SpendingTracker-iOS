@@ -47,9 +47,8 @@ struct JournalView: View {
                                 .frame(height: 12)
                             Text(entry.desc)
                         }
-                        
                     }
-                    .tint(Color.white)
+                    .tint(Color.primary)
                     .padding()
                     .frame(maxWidth: .infinity)
                     .background(.ultraThinMaterial)
@@ -88,7 +87,7 @@ struct JournalView: View {
                     } else {
                         Alert(
                             title: Text("Delete Income"),
-                            message: Text("Are you sure you want to delete this Expense of \(selectedJournal!.amount.formatted(.currency(code: locale.currency!.identifier)))."),
+                            message: Text("Are you sure you want to delete this Income of \(selectedJournal!.amount.formatted(.currency(code: locale.currency!.identifier)))."),
                             primaryButton: .default(
                                 Text("Cancel"),
                                 action: {
